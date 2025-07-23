@@ -47,9 +47,5 @@ Filtering by order value enables focused analysis, including:
 - Evaluating revenue trends across time and regions
 - Supporting campaigns targeting high-ticket transactions
 
-## ➤ How to Run This Project
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
 
