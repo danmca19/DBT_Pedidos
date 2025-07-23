@@ -1,96 +1,55 @@
-Customer and Orders Data Modeling with dbt
-This project presents a practical example of data modeling using dbt (Data Build Tool). It simulates a business scenario involving customers and orders, demonstrating how to apply transformations and business rules through SQL models and schema declarations. The goal is to showcase best practices for organizing, validating, and documenting analytical data pipelines.
+# Customer and Orders Data Modeling with dbt
 
-➤ Project Overview
+This project presents a practical example of data modeling using **dbt (Data Build Tool)**. It simulates a business scenario involving customers and orders, demonstrating how to apply transformations and business rules through SQL models and schema declarations. The goal is to showcase best practices for organizing, validating, and documenting analytical data pipelines.
+
+## ➤ Project Overview
+
 The objective is to build analytical models that transform raw customer and order data into reliable business insights. It includes filters, validation logic, and descriptive metadata to support real-world use cases such as dashboards, revenue analysis, and customer segmentation.
 
-➤ Project Structure
-clientes.sql
-Transforms raw data from the tb_clientes table by selecting key fields like id_cliente, nome, email, status, and data_cadastro. This model defines the base customer dataset, supporting analytics related to customer behavior and onboarding.
+## ➤ Project Structure
 
-pedidos.sql
-Transforms data from tb_pedidos, including a filter that selects only orders where the valor_total is greater than 200. This models high-value transactions that are often key to marketing, sales, and strategic decisions.
+- **clientes.sql**  
+  Transforms raw data from the `tb_clientes` table by selecting key fields like `id_cliente`, `nome`, `email`, `status`, and `data_cadastro`. This model defines the base customer dataset, supporting analytics related to customer behavior and onboarding.
 
-schema.yml
-YAML file that defines metadata and tests for each model. It includes descriptions of fields and validation rules such as unique and not null. This file enables automated testing and integrated documentation through dbt.
+- **pedidos.sql**  
+  Transforms data from `tb_pedidos`, including a filter that selects only orders where the `valor_total` is greater than 200. This models high-value transactions that are often key to marketing, sales, and strategic decisions.
 
-➤ Technical Approach
-Models use Common Table Expressions (CTEs) for modular and readable SQL.
+- **schema.yml**  
+  YAML file that defines metadata and tests for each model. It includes descriptions of fields and validation rules such as `unique` and `not null`. This file enables automated testing and integrated documentation through dbt.
 
-Business logic is applied directly in SQL (e.g., value filters).
+## ➤ Technical Approach
 
-Clear separation between raw and transformed layers.
+- Models use **Common Table Expressions (CTEs)** for modular and readable SQL.
+- Business logic is applied directly in SQL (e.g., value filters).
+- Clear separation between raw and transformed data layers.
+- Models are materialized as **views**, optimized for lightweight development and data exploration.
+- Includes **automated tests** to ensure data quality and consistency.
 
-Models are materialized as views for lightweight development and exploration.
+## ➤ Technologies Used
 
-Includes data tests to prevent issues such as duplicates or missing key values.
+- **dbt (Data Build Tool)** – for orchestrating and managing SQL transformations
+- **SQL** – for implementing transformation logic and business rules
+- **YAML** – for schema declarations, metadata, and automated testing
 
-➤ Technologies Used
-dbt (Data Build Tool) – for orchestrating SQL-based data transformations.
+## ➤ Real-World Applications
 
-SQL – to encode business logic and data filters.
+### Customer and Order Analytics
 
-YAML – to declare schema definitions, field descriptions, and data quality tests.
+This project supports dashboards and insights such as:
+- New customer registrations over time
+- High-value orders and purchasing behavior
+- Customer lifecycle and engagement metrics
 
-➤ Real-World Applications
-Customer and Order Analytics
-This project can support dashboards and queries that explore:
+### Revenue-Oriented Business Use Cases
 
-Daily or weekly customer registrations
+Filtering by order value enables focused analysis, including:
+- Identifying and prioritizing top-spending customers
+- Evaluating revenue trends across time and regions
+- Supporting campaigns targeting high-ticket transactions
 
-High-value order patterns
+## ➤ How to Run This Project
 
-Customer lifecycle metrics and engagement
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
 
-Revenue-Focused Business Insights
-Filtering orders over a threshold helps prioritize marketing and sales efforts:
-
-Identifying high-value customers
-
-Monitoring revenue by time period or region
-
-Supporting loyalty or retention campaigns based on order volume
-
-➤ How to Run This Project
-Clone the repository:
-
-bash
-Copiar
-Editar
-git clone <repository-url>
-Set up your dbt environment and configure your profile connection.
-
-Run the models:
-
-bash
-Copiar
-Editar
-dbt run
-Run tests:
-
-bash
-Copiar
-Editar
-dbt test
-Generate and serve the documentation:
-
-bash
-Copiar
-Editar
-dbt docs generate
-dbt docs serve
-➤ Next Steps
-Create aggregate models such as customer lifetime value or average ticket size.
-
-Introduce a staging layer to follow a layered approach: raw → staging → marts.
-
-Add snapshots to capture historical changes in customer or order data.
-
-Include advanced tests for value ranges, consistency, or business rule validation.
-
-➤ References
-dbt documentation: https://docs.getdbt.com
-
-YAML specifications: https://yaml.org/spec/
-
-Dimensional modeling (Kimball): The Data Warehouse Toolkit
